@@ -1,45 +1,25 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
 
-public class WordCounterAndRandomStringGenerator {
+public class Main {
 
-    // Word Counter Function
-    public int countWords(String text) {
-        if (text == null || text.isEmpty()) {
-            return 0;
-        }
-        // Split text into words using whitespace as delimiter
-        String[] words = text.split("\\s+");
-        return words.length;
-    }
+    public static void main(String[] args) {
+        // Factorial calculation
+        int n = 5;
+        int factorial = FactorialCalculator.factorial(n);
+        System.out.println("Factorial of " + n + " is: " + factorial);
 
-    public int countOccurrences(String text, String word) {
-        if (text == null || text.isEmpty() || word == null || word.isEmpty()) {
-            return 0;
-        }
-        // Split text into words using whitespace as delimiter
-        String[] words = text.split("\\s+");
-        int count = 0;
-        for (String w : words) {
-            if (w.equals(word)) {
-                count++;
-            }
-        }
-        return count;
-    }
+        // Sorting a list of numbers
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(3);
+        numbers.add(7);
+        numbers.add(1);
 
-    // Random String Generator Function
-    public String generateRandomString(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("Length must be positive");
-        }
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        StringBuilder sb = new StringBuilder(length);
-        Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            sb.append(characters.charAt(random.nextInt(characters.length())));
-        }
-        return sb.toString();
+        System.out.println("Before sorting: " + numbers);
+
+        ListSorter.sort(numbers);
+
+        System.out.println("After sorting: " + numbers);
     }
 }

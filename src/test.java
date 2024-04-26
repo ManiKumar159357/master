@@ -1,30 +1,42 @@
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class WordCounterAndRandomStringGeneratorTest {
+public class CombinedTest {
 
     @Test
-    public void testCountWords() {
-        WordCounterAndRandomStringGenerator wordCounter = new WordCounterAndRandomStringGenerator();
-        assertEquals(3, wordCounter.countWords("Hello world Java"));
+    public void testFactorialOfZero() {
+        assertEquals(1, FactorialCalculator.factorial(0));
     }
 
     @Test
-    public void testCountOccurrences() {
-        WordCounterAndRandomStringGenerator wordCounter = new WordCounterAndRandomStringGenerator();
-        assertEquals(2, wordCounter.countOccurrences("Java is fun. Java is cool.", "Java"));
+    public void testFactorialOfPositiveNumber() {
+        assertEquals(120, FactorialCalculator.factorial(5));
     }
 
     @Test
-    public void testGenerateRandomString() {
-        WordCounterAndRandomStringGenerator generator = new WordCounterAndRandomStringGenerator();
-        assertEquals(10, generator.generateRandomString(10).length());
+    public void testFactorialOfNegativeNumber() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            FactorialCalculator.factorial(-5);
+        });
     }
 
     @Test
-    public void testGenerateRandomStringNonNull() {
-        WordCounterAndRandomStringGenerator generator = new WordCounterAndRandomStringGenerator();
-        assertNotNull(generator.generateRandomString(5));
+    public void testSortAscending() {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(5, 3, 7, 1));
+        List<Integer> sortedNumbers = new ArrayList<>(Arrays.asList(1, 3, 5, 7));
+        ListSorter.sort(numbers);
+        assertEquals(sortedNumbers, numbers);
+    }
+
+    @Test
+    public void testSortDescending() {
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(5, 3, 7, 1));
+        List<Integer> sortedNumbers = new ArrayList<>(Arrays.asList(7, 5, 3, 1));
+        ListSorter.sortDescending(numbers);
+        assertEquals(sortedNumbers, numbers);
     }
 }
 
