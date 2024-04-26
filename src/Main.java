@@ -1,15 +1,45 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class WordCounterAndRandomStringGenerator {
+
+    // Word Counter Function
+    public int countWords(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
         }
+        // Split text into words using whitespace as delimiter
+        String[] words = text.split("\\s+");
+        return words.length;
+    }
+
+    public int countOccurrences(String text, String word) {
+        if (text == null || text.isEmpty() || word == null || word.isEmpty()) {
+            return 0;
+        }
+        // Split text into words using whitespace as delimiter
+        String[] words = text.split("\\s+");
+        int count = 0;
+        for (String w : words) {
+            if (w.equals(word)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // Random String Generator Function
+    public String generateRandomString(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("Length must be positive");
+        }
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder sb = new StringBuilder(length);
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            sb.append(characters.charAt(random.nextInt(characters.length())));
+        }
+        return sb.toString();
     }
 }
