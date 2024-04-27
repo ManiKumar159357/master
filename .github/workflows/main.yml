@@ -17,5 +17,8 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '22'
+          distribution: 'adopt'
+
+    # Add more steps here for building and testing your project
 
 
